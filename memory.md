@@ -29,5 +29,5 @@
 
 ## 参考:
 
-https://www.ibm.com/d
+https://www.ibm.com/developerworks/library/j-memusage/  
 https://stackoverflow.com/questions/2440434/whats-the-difference-between-reserved-and-committed-memory
