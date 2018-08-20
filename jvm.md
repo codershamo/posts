@@ -87,12 +87,22 @@
     新版的Linux系统加入了 ptrace-scope 机制. 这种机制为了防止用户访问当前正在运行的进程的内存和状态, 而一些调试软件本身就是利用 ptrace 来进行获取某进程的内存状态的(包括GDB),所以在新版本的Linux系统, 默认情况下不允许再访问了. 可以使用上述命令临时开启.    
     永久写到文件来持久化:
     ```shell
-    vim /etc/sysctl.d/10-ptrace.conf
-    
+    vim /etc/sysctl.d/10-ptrace.conf  
     添加或修改为以下这一句:(0:允许, 1:不允许)
     kernel.yama.ptrace_scope = 0
     ```
+
 ## Metaspace in Java 8
+
+先看下java 6的堆结构
+
+![java_memory_permGen](pictures/jvm/java_memory_permGen.png)
+
+再来看下java 8的Metadata的变化
+
+![jvm_metapsace](pictures/jvm/jvm_metapsace.png)
+
+### Metaspace
 
 
 
