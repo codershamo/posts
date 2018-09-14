@@ -145,3 +145,9 @@ kafka依赖zookeeper，所以在运行kafka之前，先运行zookeeper.
 ```
 
 ![test](pictures/kafka/选区_003.jpg)
+
+* 查看log文件
+
+```shell
+bin/kafka-run-class.sh kafka.tools.DumpLogSegments --files /tmp/kafka-logs/test-0/00000000000000000000.log  --print-data-log
+```
