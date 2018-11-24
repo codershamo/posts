@@ -67,6 +67,30 @@ mysql>
 
 ```
 
+## 重启容器
+查看容器
+
+```shell
+{} ~ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                        PORTS                               NAMES
+f857187578a8        mysql               "docker-entrypoint.s…"   36 minutes ago      Exited (255) 20 minutes ago   0.0.0.0:3306->3306/tcp, 33060/tcp   mysql
+```
+
+重启mysql实例容器
+
+```shell
+{} ~ docker start f857187578a8
+f857187578a8
+```
+
+## 登录容器
+
+```shell
+docker exec -it f857 /bin/bash
+```
+> -i: 即使没有attached也保持STDIN打开  
+-t: 分配一个仿终端
+
 ## 参考
 
 https://blog.csdn.net/qq_39781497/article/details/78060551
