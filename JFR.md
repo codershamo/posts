@@ -23,6 +23,8 @@
     JFR.check
     ...
     ```
+    sudo -u tomcat jcmd 22213 VM.unlock_commercial_features
+    
 * **Start**
     ```
     {19:51}~ ➭ jcmd 31547 JFR.start name=MyRecording settings=default
