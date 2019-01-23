@@ -1,28 +1,28 @@
 # Arthas
-###上传工具：
+#### 上传工具：
   
 ```shell 
 scp arthas.tar.gz xuefeng.sha@l-rebuildintlb2.h.cn2:/tmp
 ```
 
-###解压：  
+#### 解压：  
 
 ```shell
 tar zxvf arthas.tar.gz
 ```
 
-###运行：  
+#### 运行：  
 
 ```shell
 sudo -u tomcat -EH java -jar arthas-boot.jar
 ```
-###关闭：
+#### 关闭：
 
 ```
 shutdown
 ```
 
-###实战：
+#### 实战：
 
 1 查看dashboard
 
@@ -60,7 +60,7 @@ trace com.qunar.hotel.inter.price.service.executor.AbstractDetailExecutor execut
 
 # VJTools
 
-###vjtop
+#### vjtop
 
 上传：
 
@@ -74,7 +74,7 @@ scp vjtop.tar.gz xuefeng.sha@l-rebuildcore1.h.cn2:/tmp
 sudo -u tomcat -EH ./vjtop.sh $PID
 ```
 
-###vjdump
+#### vjdump
 一键收集jstack、jmap以及GC日志等相关信息，并以zip包保存，默认在目录 **/tmp/vjtools/vjdump** 下  
 
 收集数据包括：
