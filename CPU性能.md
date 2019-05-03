@@ -163,7 +163,7 @@
 	> root用户查看进程信息无权限，用ps命令查看进程状态，很有可能是进程为僵尸进程
 11. 查看中断：  
 	
-	```shell
+	```bash
 	#软中断
 	cat /proc/softirqs
                     CPU0       CPU1
@@ -182,7 +182,7 @@
 	
 	>软中断以内核的方式运行，每个CPU都对应一个软中断内核线程，这个软中断内核线程就叫做 ksoftirqd/CPU 编号。
 	
-	```shell
+	```vb
 	$ ps aux | grep softirq
 	root         7  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/0]
 	root        16  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/1]
