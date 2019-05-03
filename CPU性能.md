@@ -35,7 +35,7 @@
 1. 查看cpu个数: lscpu,nproc
 2. 查看各个CPU使用率: mpstat
 
-	```bash
+	```powershell
 	# -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒后输出一组数据
 	$ mpstat -P ALL 5
 	Linux 4.15.0 (ubuntu) 09/22/18 _x86_64_ (2 CPU)
@@ -56,7 +56,7 @@
 
 	```
 	
-	```java
+	```powershell
 	# -d 展示 I/O 统计数据，-p 指定进程号，间隔 1 秒输出 3 组数据
 	$ pidstat -d -p 4344 1 3
 	06:38:50      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
@@ -69,7 +69,7 @@
 4. 查看中断和上下文切换: vmstat、pidstat  
 	vmstat查看系统总体情况：
 
-	```shell
+	```powershell
 	# 每隔 5 秒输出 1 组数据
 	$ vmstat 5
 	procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
@@ -85,7 +85,7 @@
 	
 	pidstat查看具体进程:  
 	
-	```shell
+	```powershell
 	# 每隔 1 秒输出一组数据（需要 Ctrl+C 才结束）
 	# -wt 参数表示输出线程的上下文切换指标
 	$ pidstat -wt 1
@@ -107,7 +107,7 @@
 
 	系统中断可以从 /proc/interrupts 这个只读文件中读取。/proc实际上是Linux的一个虚拟文件系统，用于内核空间与用户空间之间的通信。
 
-	```shell
+	```powershell
 	# -d 参数表示高亮显示变化的区域
 	$ watch -d cat /proc/interrupts
            CPU0       CPU1
@@ -123,13 +123,13 @@
 
 6. 查看使用CPU线程：perf top
 
-	```shell
+	```powershell
 	# -g 开启调用关系分析，-p 指定 php-fpm 的进程号 21515
 	$ perf top -g -p 21515
 
 	```
 	
-	```
+	```powershell
 	$ perf record -g
 	$ perf report
 
@@ -137,7 +137,7 @@
 
 7. 查看进程间关系: pstree
 
-	```shell
+	```powershell
 	# -a 表示输出命令行选项
 	# p 表 PID
 	# s 表示指定进程的父进程
@@ -155,7 +155,7 @@
 9. 当 iowait 升高时，进程很可能因为得不到硬件的响应，而长时间处于不可中断状态
 10. 跟踪进程系统调用工具: strace
 	
-	```shell
+	```powershell
 	strace -p 6082
 	strace: attach: ptrace(PTRACE_SEIZE, 6082): Operation not permitted
 
@@ -163,7 +163,7 @@
 	> root用户查看进程信息无权限，用ps命令查看进程状态，很有可能是进程为僵尸进程
 11. 查看中断：  
 	
-	```bash
+	```powershell
 	#软中断
 	cat /proc/softirqs
                     CPU0       CPU1
@@ -182,7 +182,7 @@
 	
 	>软中断以内核的方式运行，每个CPU都对应一个软中断内核线程，这个软中断内核线程就叫做 ksoftirqd/CPU 编号。
 	
-	```vb
+	```powershell
 	$ ps aux | grep softirq
 	root         7  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/0]
 	root        16  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/1]
