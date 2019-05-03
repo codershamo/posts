@@ -35,7 +35,7 @@
 1. 查看cpu个数: lscpu,nproc
 2. 查看各个CPU使用率: mpstat
 
-	```c
+	```bash
 	# -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒后输出一组数据
 	$ mpstat -P ALL 5
 	Linux 4.15.0 (ubuntu) 09/22/18 _x86_64_ (2 CPU)
@@ -48,7 +48,7 @@
 
 3. 查看占用CPU进程：pidstat
 	
-	```shell
+	```powershell
 	# 间隔 5 秒后输出一组数据, -u 表示 CPU 指标
 	$ pidstat -u 5 1
 	13:37:07      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
