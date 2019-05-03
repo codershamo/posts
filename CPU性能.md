@@ -45,6 +45,7 @@ Linux 4.15.0 (ubuntu) 09/22/18 _x86_64_ (2 CPU)
 13:30:11       1  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00
 
 ```
+
 3. 查看占用CPU进程：pidstat
 
 ```
@@ -74,19 +75,20 @@ $ vmstat 5
 procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
  0  0      0 7005360  91564 818900    0    0     0     0   25   33  0  0 100  0  0
+ 
+```
 
-```
-	* cs(context switch)：每秒上下文切换次数
-	* in(interrupt)：每秒中断次数
-	* r(Running or Runnable)：就绪队列长度，也就是正在运行和等待CPU的进程数
-	* b(Blocked)：处于不可中断睡眠状态的进程数。
+* cs(context switch)：每秒上下文切换次数
+* in(interrupt)：每秒中断次数
+* r(Running or Runnable)：就绪队列长度，也就是正在运行和等待CPU的进程数
+* b(Blocked)：处于不可中断睡眠状态的进程数。
 	
-	pidstat查看具体进程:
+	pidstat查看具体进程:  
 	
 ```
-# 每隔 1 秒输出一组数据（需要 Ctrl+C 才结束）
-# -wt 参数表示输出线程的上下文切换指标
-$ pidstat -wt 1
+	# 每隔 1 秒输出一组数据（需要 Ctrl+C 才结束）
+	# -wt 参数表示输出线程的上下文切换指标
+	$ pidstat -wt 1
 08:14:05      UID      TGID       TID   cswch/s nvcswch/s  Command
 ...
 08:14:05        0     10551         -      6.00      0.00  sysbench
@@ -98,8 +100,8 @@ $ pidstat -wt 1
 
 ```
 	
-	* cswch(voluntary context switches): 自愿上下文切换
-	* nvcswch(non voluntary context switches): 非自愿上下文切换
+* cswch(voluntary context switches): 自愿上下文切换
+* nvcswch(non voluntary context switches): 非自愿上下文切换
 	
 5. 查看中断：
 
@@ -114,9 +116,9 @@ RES:    2450431    5279697   Rescheduling interrupts
 ...
 
 ```
-	* 自愿上下文切换变多了，说明进程在等待资源，有可能发生了I/O等其他问题
-	* 非自愿上下文切换变多了，说明进程都在被强制调度，也就是都在争抢CPU，说明CPU的确成了瓶颈
-	* 中断次数变多了，说明CPU被中断处理程序占用，还需要通过查看/proc/interrupts文件来分析具体的中断类型。
+* 自愿上下文切换变多了，说明进程在等待资源，有可能发生了I/O等其他问题
+* 非自愿上下文切换变多了，说明进程都在被强制调度，也就是都在争抢CPU，说明CPU的确成了瓶颈
+* 中断次数变多了，说明CPU被中断处理程序占用，还需要通过查看/proc/interrupts文件来分析具体的中断类型。
 
 6. 查看使用CPU线程：perf top
 
