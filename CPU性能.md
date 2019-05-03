@@ -56,7 +56,7 @@
 
 	```
 	
-	```shell
+	```java
 	# -d 展示 I/O 统计数据，-p 指定进程号，间隔 1 秒输出 3 组数据
 	$ pidstat -d -p 4344 1 3
 	06:38:50      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
