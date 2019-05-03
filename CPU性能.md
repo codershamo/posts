@@ -35,7 +35,7 @@
 1. 查看cpu个数: lscpu,nproc
 2. 查看各个CPU使用率: mpstat
 
-	```shell
+	```c
 	# -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒后输出一组数据
 	$ mpstat -P ALL 5
 	Linux 4.15.0 (ubuntu) 09/22/18 _x86_64_ (2 CPU)
