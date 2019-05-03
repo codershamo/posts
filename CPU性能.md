@@ -1,4 +1,4 @@
-##CPU性能
+## CPU性能
 ### 基本概念
 1. *平均负载(average load)*：单位时间内，系统处于**可运行状态**和**不可中断状态**的平均进程数  
 	a. 可运行状态：正在使用或等待CPU的进程，ps命令处于R状态的进程。  
@@ -36,7 +36,7 @@
 2. 查看各个CPU使用率: mpstat
 
 	```
-	# -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒后输出一组数据
+# -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒后输出一组数据
 $ mpstat -P ALL 5
 Linux 4.15.0 (ubuntu) 09/22/18 _x86_64_ (2 CPU)
 13:30:06     CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
