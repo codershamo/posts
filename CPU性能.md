@@ -49,20 +49,20 @@
 3. 查看占用CPU进程：pidstat
 	
 	```
-# 间隔 5 秒后输出一组数据, -u 表示 CPU 指标
-$ pidstat -u 5 1
-13:37:07      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-13:37:12        0      2962  100.00    0.00    0.00    0.00  100.00     1  stress
+	# 间隔 5 秒后输出一组数据, -u 表示 CPU 指标
+	$ pidstat -u 5 1
+	13:37:07      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+	13:37:12        0      2962  100.00    0.00    0.00    0.00  100.00     1  stress
 
 	```
 	
 	```
-# -d 展示 I/O 统计数据，-p 指定进程号，间隔 1 秒输出 3 组数据
-$ pidstat -d -p 4344 1 3
-06:38:50      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:38:51        0      4344      0.00      0.00      0.00       0  app
-06:38:52        0      4344      0.00      0.00      0.00       0  app
-06:38:53        0      4344      0.00      0.00      0.00       0  app
+	# -d 展示 I/O 统计数据，-p 指定进程号，间隔 1 秒输出 3 组数据
+	$ pidstat -d -p 4344 1 3
+	06:38:50      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
+	06:38:51        0      4344      0.00      0.00      0.00       0  app
+	06:38:52        0      4344      0.00      0.00      0.00       0  app
+	06:38:53        0      4344      0.00      0.00      0.00       0  app
 
 	```
 
@@ -70,11 +70,11 @@ $ pidstat -d -p 4344 1 3
 	vmstat查看系统总体情况：
 
 	```
-# 每隔 5 秒输出 1 组数据
-$ vmstat 5
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
- r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 0  0      0 7005360  91564 818900    0    0     0     0   25   33  0  0 100  0  0
+	# 每隔 5 秒输出 1 组数据
+	$ vmstat 5
+	procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ 	r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 	0  0      0 7005360  91564 818900    0    0     0     0   25   33  0  0 100  0  0
  
 	```
 
@@ -86,17 +86,17 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 	pidstat查看具体进程:  
 	
 	```
-# 每隔 1 秒输出一组数据（需要 Ctrl+C 才结束）
-# -wt 参数表示输出线程的上下文切换指标
-$ pidstat -wt 1
-08:14:05      UID      TGID       TID   cswch/s nvcswch/s  Command
-...
-08:14:05        0     10551         -      6.00      0.00  sysbench
-08:14:05        0         -     10551      6.00      0.00  |__sysbench
-08:14:05        0         -     10552  18911.00 103740.00  |__sysbench
-08:14:05        0         -     10553  18915.00 100955.00  |__sysbench
-08:14:05        0         -     10554  18827.00 103954.00  |__sysbench
-...
+	# 每隔 1 秒输出一组数据（需要 Ctrl+C 才结束）
+	# -wt 参数表示输出线程的上下文切换指标
+	$ pidstat -wt 1
+	08:14:05      UID      TGID       TID   cswch/s nvcswch/s  Command
+	...
+	08:14:05        0     10551         -      6.00      0.00  sysbench
+	08:14:05        0         -     10551      6.00      0.00  |__sysbench
+	08:14:05        0         -     10552  18911.00 103740.00  |__sysbench
+	08:14:05        0         -     10553  18915.00 100955.00  |__sysbench
+	08:14:05        0         -     10554  18827.00 103954.00  |__sysbench
+	...
 
 	```
 	
@@ -138,16 +138,16 @@ $ pidstat -wt 1
 7. 查看进程间关系: pstree
 
 	```
-# -a 表示输出命令行选项
-# p 表 PID
-# s 表示指定进程的父进程
-$ pstree -aps 3084
-systemd,1
-  └─dockerd,15006 -H fd://
-      └─docker-containe,15024 --config /var/run/docker/containerd/containerd.toml
-          └─docker-containe,3991 -namespace moby -workdir...
-              └─app,4009
-                  └─(app,3084)
+	# -a 表示输出命令行选项
+	# p 表 PID
+	# s 表示指定进程的父进程
+	$ pstree -aps 3084
+	systemd,1
+	  └─dockerd,15006 -H fd://
+	      └─docker-containe,15024 --config /var/run/docker/containerd/containerd.toml
+	          └─docker-containe,3991 -namespace moby -workdir...
+	              └─app,4009
+	                  └─(app,3084)
 
 	```
 	
@@ -183,9 +183,9 @@ systemd,1
 	>软中断以内核的方式运行，每个CPU都对应一个软中断内核线程，这个软中断内核线程就叫做 ksoftirqd/CPU 编号。
 	
 	```
-$ ps aux | grep softirq
-root         7  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/0]
-root        16  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/1]
+	$ ps aux | grep softirq
+	root         7  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/0]
+	root        16  0.0  0.0      0     0 ?        S    Oct10   0:01 [ksoftirqd/1]
 
 	```
 	
