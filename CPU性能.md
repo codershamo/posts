@@ -58,6 +58,7 @@
 	
 	```powershell
 	# -d 展示 I/O 统计数据，-p 指定进程号，间隔 1 秒输出 3 组数据
+	# 如果没有数据请使用sudo 执行
 	$ pidstat -d -p 4344 1 3
 	06:38:50      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
 	06:38:51        0      4344      0.00      0.00      0.00       0  app
@@ -103,6 +104,11 @@
 	* cswch(voluntary context switches): 自愿上下文切换
 	* nvcswch(non voluntary context switches): 非自愿上下文切换
 	
+		* 自愿上下文切换变多了，说明进程在等待资源，有可能发生了I/O等其他问题
+		* 非自愿上下文切换变多了，说明进程都在被强制调度，也就是都在争抢CPU，说明CPU的确成了瓶颈
+	
+	> 有时候会发现名叫kworker的进程占用了大量CPU，kworker就是Linux内核进程在处理系统调用，所以应用程序(Java)涉及到系统调用就会体现在kworker上。
+	
 5. 查看中断：
 
 	系统中断可以从 /proc/interrupts 这个只读文件中读取。/proc实际上是Linux的一个虚拟文件系统，用于内核空间与用户空间之间的通信。
@@ -117,8 +123,6 @@
 
 	```
 	
-	* 自愿上下文切换变多了，说明进程在等待资源，有可能发生了I/O等其他问题
-	* 非自愿上下文切换变多了，说明进程都在被强制调度，也就是都在争抢CPU，说明CPU的确成了瓶颈
 	* 中断次数变多了，说明CPU被中断处理程序占用，还需要通过查看/proc/interrupts文件来分析具体的中断类型。
 
 6. 查看使用CPU线程：perf top
