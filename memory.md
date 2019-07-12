@@ -27,6 +27,12 @@
 理解了reserved memory和committed memory, 就很容易理解-Xmx和-Xms的含义了. 回到开头的例子, -Xmx4g表示应用在虚拟内存,也就是页上分配了4g的空间大小, 而这部分实际上并没有与实际物理内存关联, 也就是并没有占用实际物理内存, 但已经占用了4g的虚拟内存, 其他进程是不能再占用这部分虚拟内存的.
 -Xms1g表示占用了1g大小的虚拟内存, 并且这部分虚拟内存已经与实际的物理内存完成了映射, 应用是可以直接访问的, 相当于已经占用了1g的物理内存.
 
+## 查看swap占用
+sudo yum install epel-release  
+sudo yum install smem python-matplotlib
+
+smem --sort swap
+
 ## 参考:
 
 https://www.ibm.com/developerworks/library/j-memusage/  
